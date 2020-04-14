@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: angularimages
+  name: angularimages
+spec:
+  selector:
+    matchLabels:
+      app: angularimages
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: angularimages
+    spec:
+      containers:
+      - image: ratheeshlalukms/testimage:v2
+        name: angularimages
+        ports:
+        - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: angular-service-images
+spec:
+  selector:
+    app: angularimages
+  type: ClusterIP
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+#   nodePort: 31000
