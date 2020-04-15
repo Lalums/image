@@ -15,7 +15,7 @@ spec:
         app: angularimages
     spec:
       containers:
-      - image: ratheeshlalukms/testimage:v2
+      - image: ratheeshlalukms/testimage:#{Build.BuildId}#
         name: angularimages
         ports:
         - containerPort: 80
